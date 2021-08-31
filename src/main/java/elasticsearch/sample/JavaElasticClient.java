@@ -36,6 +36,7 @@ public class JavaElasticClient {
         // System.out.println("response id: " + indexResponse.getId());
         // System.out.println("response name: " + indexResponse.getResult().name());
 
+        // Map 型のデータを Elasticsearch に送る
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         map.put("keyOne", 10);
         map.put("keyTwo", 30);
