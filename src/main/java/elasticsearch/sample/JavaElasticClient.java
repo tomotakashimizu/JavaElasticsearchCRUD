@@ -3,12 +3,11 @@ package elasticsearch.sample;
 import java.io.IOException;
 
 import org.apache.http.HttpHost;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.indices.CreateIndexRequest;
-import org.elasticsearch.client.indices.CreateIndexResponse;
-import org.elasticsearch.common.settings.Settings;
 
 public class JavaElasticClient {
 
@@ -18,12 +17,21 @@ public class JavaElasticClient {
                 RestClient.builder(new HttpHost("localhost", 9200, "http")));
 
         // Elasticsearch に新しい index を作成
-        CreateIndexRequest request = new CreateIndexRequest("sampleindex");
-        request.settings(Settings.builder()
-                .put("index.number_of_shards", 1)
-                .put("index.number_of_replicas", 2));
-        // index が作成されたか確認
-        CreateIndexResponse createIndexResponse = client.indices().create(request, RequestOptions.DEFAULT);
-        System.out.println("response id: " + createIndexResponse.index());
+        // CreateIndexRequest request = new CreateIndexRequest("sampleindex");
+        // request.settings(Settings.builder()
+        // .put("index.number_of_shards", 1)
+        // .put("index.number_of_replicas", 2));
+        // // index が作成されたか確認
+        // CreateIndexResponse createIndexResponse = client.indices().create(request,
+        // RequestOptions.DEFAULT);
+        // System.out.println("response id: " + createIndexResponse.index());
+
+        // String型のデータを Elasticsearch に送る
+        IndexRequest indexRequest = new IndexRequest("sampleindex");
+        indexRequest.id("001");
+        indexRequest.source("SampleKey", "SampleValue");
+        IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
+        System.out.println("response id: " + indexResponse.getId());
+        System.out.println("response name: " + indexResponse.getResult().name());
     }
 }
