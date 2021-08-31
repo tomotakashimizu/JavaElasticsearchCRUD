@@ -1,6 +1,7 @@
 package elasticsearch.sample;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.index.IndexRequest;
@@ -27,9 +28,22 @@ public class JavaElasticClient {
         // System.out.println("response id: " + createIndexResponse.index());
 
         // String型のデータを Elasticsearch に送る
+        // IndexRequest indexRequest = new IndexRequest("sampleindex");
+        // indexRequest.id("001");
+        // indexRequest.source("SampleKey", "SampleValue");
+        // IndexResponse indexResponse = client.index(indexRequest,
+        // RequestOptions.DEFAULT);
+        // System.out.println("response id: " + indexResponse.getId());
+        // System.out.println("response name: " + indexResponse.getResult().name());
+
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        map.put("keyOne", 10);
+        map.put("keyTwo", 30);
+        map.put("KeyThree", 20);
+
         IndexRequest indexRequest = new IndexRequest("sampleindex");
-        indexRequest.id("001");
-        indexRequest.source("SampleKey", "SampleValue");
+        indexRequest.id("002");
+        indexRequest.source(map);
         IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
         System.out.println("response id: " + indexResponse.getId());
         System.out.println("response name: " + indexResponse.getResult().name());
