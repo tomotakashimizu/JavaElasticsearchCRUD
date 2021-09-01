@@ -39,27 +39,31 @@ public class JavaElasticClient {
         // System.out.println("response id: " + indexResponse.getId());
         // System.out.println("response name: " + indexResponse.getResult().name());
 
-        // Map 型のデータを Elasticsearch に送る
+        // Map 型のサンプルデータを作成
         // HashMap<String, Integer> map = new HashMap<String, Integer>();
         // map.put("keyOne", 10);
         // map.put("keyTwo", 30);
         // map.put("KeyThree", 20);
 
+        // Map 型のデータを Elasticsearch に送る
         // IndexRequest indexRequest = new IndexRequest("sampleindex");
         // indexRequest.id("002");
         // indexRequest.source(map);
+        // 正常に処理されたか確認
         // IndexResponse indexResponse = client.index(indexRequest,
         // RequestOptions.DEFAULT);
         // System.out.println("response id: " + indexResponse.getId());
         // System.out.println("response name: " + indexResponse.getResult().name());
 
-        // JSON 形式のデータを Elasticsearch に送る
+        // POJO クラスをインスタンス化
         EmployeePojo emp = new EmployeePojo("Elon", "Musk", LocalDate.now());
 
+        // POJO を JSON 形式にして データを Elasticsearch に送る
         IndexRequest indexRequest = new IndexRequest("sampleindex");
         indexRequest.id("003");
         indexRequest.source(new ObjectMapper().writeValueAsString(emp), XContentType.JSON);
-        System.out.println(new ObjectMapper().writeValueAsString(emp));
+        System.out.println("JSONデータ" + new ObjectMapper().writeValueAsString(emp));
+        // 正常に処理されたか確認
         IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
         System.out.println("response id: " + indexResponse.getId());
         System.out.println("response name: " + indexResponse.getResult().name());
