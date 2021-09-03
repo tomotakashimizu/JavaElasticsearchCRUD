@@ -1,17 +1,18 @@
 package elasticsearch.sample;
 
 import java.io.IOException;
-import java.time.LocalDate;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.HttpHost;
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.TermQueryBuilder;
+import org.elasticsearch.index.reindex.BulkByScrollResponse;
+import org.elasticsearch.index.reindex.UpdateByQueryRequest;
+import org.elasticsearch.script.Script;
+import org.elasticsearch.script.ScriptType;
 
 public class JavaElasticUpdateDelete {
 
@@ -64,13 +65,32 @@ public class JavaElasticUpdateDelete {
         // System.out.println("response id: " + indexResponseUpdate.getId());
         // System.out.println(indexResponse.getResult().name());
 
-        EmployeePojo emp = new EmployeePojo("Elon01", "Musk01", LocalDate.now());
-        // POJO を JSON 形式にして Elasticsearch のデータを更新
-        IndexRequest request = new IndexRequest("employeeindex");
-        request.id("001");
-        request.source(new ObjectMapper().writeValueAsString(emp), XContentType.JSON);
-        IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
-        System.out.println("response id:" + indexResponse.getId());
-        System.out.println(indexResponse.getResult().name());
+        // EmployeePojo emp = new EmployeePojo("Elon01", "Musk01", LocalDate.now());
+        // // POJO を JSON 形式にして Elasticsearch のデータを更新
+        // IndexRequest request = new IndexRequest("employeeindex");
+        // request.id("001");
+        // request.source(new ObjectMapper().writeValueAsString(emp),
+        // XContentType.JSON);
+        // IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+        // System.out.println("response id:" + indexResponse.getId());
+        // System.out.println(indexResponse.getResult().name());
+
+        // Using API- UpdateByQueryRequest
+        Map<String, Object> updateMap2 = new HashMap<String, Object>();
+        updateMap2.put("firstname", "Sundar01");
+        updateMap2.put("lastname", "Pichai01");
+        UpdateByQueryRequest updateByQueryRequest = new UpdateByQueryRequest("employeeindex");
+        updateByQueryRequest.setConflicts("proceed");
+        updateByQueryRequest.setQuery(new TermQueryBuilder("_id", "001"));
+        Script script = new Script(ScriptType.INLINE, "painless", "ctx._source = params", updateMap2);
+        updateByQueryRequest.setScript(script);
+
+        try {
+            BulkByScrollResponse bulkResponse = client.updateByQuery(updateByQueryRequest, RequestOptions.DEFAULT);
+            long totalDocs = bulkResponse.getTotal();
+            System.out.println("updated response id: " + totalDocs);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
