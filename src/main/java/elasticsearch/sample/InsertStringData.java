@@ -21,9 +21,9 @@ public class InsertStringData {
         IndexRequest indexRequest = new IndexRequest("sampleindex");
         indexRequest.id("001");
         indexRequest.source("SampleKey", "SampleValue");
-        // 正常に処理されたか確認
         IndexResponse indexResponse = client.index(indexRequest,
                 RequestOptions.DEFAULT);
+        // 正常に処理されたか確認
         System.out.println("response id: " + indexResponse.getId());
         System.out.println("response name: " + indexResponse.getResult().name());
     }
