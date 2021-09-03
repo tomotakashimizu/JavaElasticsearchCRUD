@@ -14,7 +14,7 @@ import org.elasticsearch.index.reindex.UpdateByQueryRequest;
 import org.elasticsearch.script.Script;
 import org.elasticsearch.script.ScriptType;
 
-public class JavaElasticUpdateDelete {
+public class JavaElasticUpdate {
 
     public static void main(String[] args) throws IOException {
         // Elasticsearch に接続
