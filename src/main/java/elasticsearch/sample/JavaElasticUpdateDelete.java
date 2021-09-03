@@ -1,8 +1,9 @@
 package elasticsearch.sample;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.index.IndexRequest;
@@ -10,6 +11,7 @@ import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.xcontent.XContentType;
 
 public class JavaElasticUpdateDelete {
 
@@ -39,26 +41,36 @@ public class JavaElasticUpdateDelete {
         // RequestOptions.DEFAULT);
         // System.out.println("updated response id: " + updateResponse.getId());
 
-        // update way2 Elasticsearch の String 型でデータ更新（元からデータがあるidの場合は一新される）
+        // // update way2 Elasticsearch の String 型でデータ更新（元からデータがあるidの場合は一新される）
+        // IndexRequest request = new IndexRequest("employeeindex");
+        // request.id("001");
+        // request.source("company", "SpaceX");
+        // IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+        // System.out.println("response id: " + indexResponse.getId());
+        // System.out.println(indexResponse.getResult().name());
+
+        // // update way2
+        // // Elasticsearch を Map 型でデータ更新（元からデータがあるidの場合は一新される）
+        // Map<String, Object> updateMap = new HashMap<String, Object>();
+        // updateMap.put("firstname", "Sundar");
+        // updateMap.put("lastname", "Pichai");
+        // updateMap.put("company", "Google");
+        // updateMap.put("sector", "IT");
+        // IndexRequest request2 = new IndexRequest("employeeindex");
+        // request2.id("002");
+        // request2.source(updateMap);
+        // IndexResponse indexResponseUpdate = client.index(request2,
+        // RequestOptions.DEFAULT);
+        // System.out.println("response id: " + indexResponseUpdate.getId());
+        // System.out.println(indexResponse.getResult().name());
+
+        EmployeePojo emp = new EmployeePojo("Elon01", "Musk01", LocalDate.now());
+        // POJO を JSON 形式にして Elasticsearch のデータを更新
         IndexRequest request = new IndexRequest("employeeindex");
         request.id("001");
-        request.source("company", "SpaceX");
+        request.source(new ObjectMapper().writeValueAsString(emp), XContentType.JSON);
         IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
-        System.out.println("response id: " + indexResponse.getId());
-        System.out.println(indexResponse.getResult().name());
-
-        // update way2
-        // Elasticsearch を Map 型でデータ更新（元からデータがあるidの場合は一新される）
-        Map<String, Object> updateMap = new HashMap<String, Object>();
-        updateMap.put("firstname", "Sundar");
-        updateMap.put("lastname", "Pichai");
-        updateMap.put("company", "Google");
-        updateMap.put("sector", "IT");
-        IndexRequest request2 = new IndexRequest("employeeindex");
-        request2.id("002");
-        request2.source(updateMap);
-        IndexResponse indexResponseUpdate = client.index(request2, RequestOptions.DEFAULT);
-        System.out.println("response id: " + indexResponseUpdate.getId());
+        System.out.println("response id:" + indexResponse.getId());
         System.out.println(indexResponse.getResult().name());
     }
 }
