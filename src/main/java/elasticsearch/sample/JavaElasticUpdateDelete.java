@@ -24,9 +24,9 @@ public class JavaElasticUpdateDelete {
         // // Elasticsearch の String 型でデータ更新, 追加
         // UpdateRequest updateRequest = new UpdateRequest("employeeindex", "002");
         // updateRequest.doc("department", "Bussiness");
-        // // 更新されたか id の確認
         // UpdateResponse updateResponse = client.update(updateRequest,
         // RequestOptions.DEFAULT);
+        // // 更新されたか id の確認
         // System.out.println("updated response id: " + updateResponse.getId());
 
         // // Map を作成
@@ -40,6 +40,7 @@ public class JavaElasticUpdateDelete {
         // "002").doc(updateMap);
         // UpdateResponse updateResponse = client.update(request,
         // RequestOptions.DEFAULT);
+        // // 更新されたか id の確認
         // System.out.println("updated response id: " + updateResponse.getId());
 
         // // update way2 Elasticsearch の String 型でデータ更新（元からデータがあるidの場合は一新される）
@@ -47,6 +48,7 @@ public class JavaElasticUpdateDelete {
         // request.id("001");
         // request.source("company", "SpaceX");
         // IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+        // // 更新されたか id の確認
         // System.out.println("response id: " + indexResponse.getId());
         // System.out.println(indexResponse.getResult().name());
 
@@ -62,6 +64,7 @@ public class JavaElasticUpdateDelete {
         // request2.source(updateMap);
         // IndexResponse indexResponseUpdate = client.index(request2,
         // RequestOptions.DEFAULT);
+        // // 更新されたか id の確認
         // System.out.println("response id: " + indexResponseUpdate.getId());
         // System.out.println(indexResponse.getResult().name());
 
@@ -72,6 +75,7 @@ public class JavaElasticUpdateDelete {
         // request.source(new ObjectMapper().writeValueAsString(emp),
         // XContentType.JSON);
         // IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+        // // 更新されたか id の確認
         // System.out.println("response id:" + indexResponse.getId());
         // System.out.println(indexResponse.getResult().name());
 
@@ -88,6 +92,7 @@ public class JavaElasticUpdateDelete {
         try {
             BulkByScrollResponse bulkResponse = client.updateByQuery(updateByQueryRequest, RequestOptions.DEFAULT);
             long totalDocs = bulkResponse.getTotal();
+            // 更新されたか id の確認
             System.out.println("updated response id: " + totalDocs);
         } catch (IOException e) {
             e.printStackTrace();
