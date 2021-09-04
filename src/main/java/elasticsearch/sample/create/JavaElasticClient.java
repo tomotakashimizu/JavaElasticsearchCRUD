@@ -1,4 +1,4 @@
-package elasticsearch.sample;
+package elasticsearch.sample.create;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -13,6 +13,8 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 
+import elasticsearch.sample.model.EmployeePojo;
+
 public class JavaElasticClient {
 
     public static void main(String[] args) throws IOException {
@@ -25,9 +27,9 @@ public class JavaElasticClient {
         // request.settings(Settings.builder()
         // .put("index.number_of_shards", 1)
         // .put("index.number_of_replicas", 2));
-        // // index が作成されたか確認
         // CreateIndexResponse createIndexResponse = client.indices().create(request,
         // RequestOptions.DEFAULT);
+        // // index が作成されたか確認
         // System.out.println("response id: " + createIndexResponse.index());
 
         // String型のデータを Elasticsearch に送る
@@ -36,6 +38,7 @@ public class JavaElasticClient {
         // indexRequest.source("SampleKey", "SampleValue");
         // IndexResponse indexResponse = client.index(indexRequest,
         // RequestOptions.DEFAULT);
+        // // 正常に処理されたか確認
         // System.out.println("response id: " + indexResponse.getId());
         // System.out.println("response name: " + indexResponse.getResult().name());
 
@@ -49,9 +52,9 @@ public class JavaElasticClient {
         // IndexRequest indexRequest = new IndexRequest("sampleindex");
         // indexRequest.id("002");
         // indexRequest.source(map);
-        // 正常に処理されたか確認
         // IndexResponse indexResponse = client.index(indexRequest,
         // RequestOptions.DEFAULT);
+        // // 正常に処理されたか確認
         // System.out.println("response id: " + indexResponse.getId());
         // System.out.println("response name: " + indexResponse.getResult().name());
 
@@ -63,8 +66,8 @@ public class JavaElasticClient {
         indexRequest.id("003");
         indexRequest.source(new ObjectMapper().writeValueAsString(emp), XContentType.JSON);
         System.out.println("JSONデータ" + new ObjectMapper().writeValueAsString(emp));
-        // 正常に処理されたか確認
         IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
+        // 正常に処理されたか確認
         System.out.println("response id: " + indexResponse.getId());
         System.out.println("response name: " + indexResponse.getResult().name());
     }

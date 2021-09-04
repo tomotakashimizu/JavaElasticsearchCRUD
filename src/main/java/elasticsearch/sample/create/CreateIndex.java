@@ -1,4 +1,4 @@
-package elasticsearch.sample;
+package elasticsearch.sample.create;
 
 import java.io.IOException;
 
@@ -23,9 +23,9 @@ public class CreateIndex {
         request.settings(Settings.builder()
                 .put("index.number_of_shards", 1)
                 .put("index.number_of_replicas", 2));
-        // index が作成されたか確認
         CreateIndexResponse createIndexResponse = client.indices().create(request,
                 RequestOptions.DEFAULT);
+        // index が作成されたか確認
         System.out.println("response id: " + createIndexResponse.index());
     }
 }
