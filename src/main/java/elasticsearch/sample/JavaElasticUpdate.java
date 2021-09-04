@@ -70,6 +70,7 @@ public class JavaElasticUpdate {
         // System.out.println("response id: " + indexResponseUpdate.getId());
         // System.out.println(indexResponseUpdate.getResult().name());
 
+        // // EmployeePojo クラスをインスタンス化
         // EmployeePojo emp = new EmployeePojo("Elon01", "Musk01", LocalDate.now());
         // // POJO を JSON 形式にして Elasticsearch のデータを更新
         // IndexRequest request = new IndexRequest("employeeindex");
@@ -78,7 +79,7 @@ public class JavaElasticUpdate {
         // XContentType.JSON);
         // IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
         // // 更新されたか id の確認
-        // System.out.println("response id:" + indexResponse.getId());
+        // System.out.println("response id: " + indexResponse.getId());
         // System.out.println(indexResponse.getResult().name());
 
         // Using API- UpdateByQueryRequest
