@@ -21,7 +21,7 @@ public class JavaElasticUpdate {
         RestHighLevelClient client = new RestHighLevelClient(
                 RestClient.builder(new HttpHost("localhost", 9200, "http")));
 
-        // // Elasticsearch の String 型でデータ更新, 追加
+        // // String 型で Elasticsearch のデータ更新
         // UpdateRequest updateRequest = new UpdateRequest("employeeindex", "002");
         // updateRequest.doc("department", "Bussiness");
         // UpdateResponse updateResponse = client.update(updateRequest,
