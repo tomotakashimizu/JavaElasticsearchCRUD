@@ -83,6 +83,7 @@ public class JavaElasticUpdate {
         // System.out.println(indexResponse.getResult().name());
 
         // Using API- UpdateByQueryRequest
+        // Map を作成
         Map<String, Object> updateMap2 = new HashMap<String, Object>();
         updateMap2.put("firstname", "Sundar01");
         updateMap2.put("lastname", "Pichai01");
