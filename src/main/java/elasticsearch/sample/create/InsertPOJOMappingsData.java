@@ -13,7 +13,7 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 
-import elasticsearch.sample.EmployeePojo;
+import elasticsearch.sample.model.EmployeePojo;
 
 // POJO を JSON 形式にして データを Elasticsearch に送る class
 public class InsertPOJOMappingsData {

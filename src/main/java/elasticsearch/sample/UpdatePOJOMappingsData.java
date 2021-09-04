@@ -13,6 +13,8 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 
+import elasticsearch.sample.model.EmployeePojo;
+
 // POJO を JSON 形式にして Elasticsearch のデータを更新
 public class UpdatePOJOMappingsData {
 

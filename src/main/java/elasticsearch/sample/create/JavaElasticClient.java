@@ -13,7 +13,7 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 
-import elasticsearch.sample.EmployeePojo;
+import elasticsearch.sample.model.EmployeePojo;
 
 public class JavaElasticClient {
 
