@@ -10,7 +10,7 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 
 // 特定の index id のデータを削除
-public class DeleteIndexIdData {
+public class DeleteIndexId {
 
     public static void main(String[] args) throws IOException {
         // Elasticsearch に接続
