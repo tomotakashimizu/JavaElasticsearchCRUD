@@ -1,4 +1,4 @@
-package elasticsearch.sample;
+package elasticsearch.sample.delete;
 
 import java.io.IOException;
 
