@@ -1,4 +1,4 @@
-package elasticsearch.sample;
+package elasticsearch.sample.model;
 
 import java.time.LocalDate;
 

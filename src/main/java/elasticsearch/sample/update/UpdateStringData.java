@@ -1,4 +1,4 @@
-package elasticsearch.sample;
+package elasticsearch.sample.update;
 
 import java.io.IOException;
 

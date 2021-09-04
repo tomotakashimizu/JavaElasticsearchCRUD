@@ -1,4 +1,4 @@
-package elasticsearch.sample;
+package elasticsearch.sample.create;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -12,6 +12,8 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
+
+import elasticsearch.sample.model.EmployeePojo;
 
 public class JavaElasticClient {
 
