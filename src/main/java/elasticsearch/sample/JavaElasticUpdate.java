@@ -43,7 +43,7 @@ public class JavaElasticUpdate {
         // // 更新されたか id の確認
         // System.out.println("updated response id: " + updateResponse.getId());
 
-        // // update way2 Elasticsearch の String 型でデータ更新（元からデータがあるidの場合は一新される）
+        // // update way2 String 型で Elasticsearch のデータ更新（元からデータがあるidの場合は一新される）
         // IndexRequest request = new IndexRequest("employeeindex");
         // request.id("001");
         // request.source("company", "SpaceX");
