@@ -54,11 +54,13 @@ public class JavaElasticUpdate {
 
         // // update way2
         // // Elasticsearch を Map 型でデータ更新（元からデータがあるidの場合は一新される）
+        // Map 作成
         // Map<String, Object> updateMap = new HashMap<String, Object>();
         // updateMap.put("firstname", "Sundar");
         // updateMap.put("lastname", "Pichai");
         // updateMap.put("company", "Google");
         // updateMap.put("sector", "IT");
+        // Elasticsearch を Map 型でデータ更新
         // IndexRequest request2 = new IndexRequest("employeeindex");
         // request2.id("002");
         // request2.source(updateMap);
@@ -66,7 +68,7 @@ public class JavaElasticUpdate {
         // RequestOptions.DEFAULT);
         // // 更新されたか id の確認
         // System.out.println("response id: " + indexResponseUpdate.getId());
-        // System.out.println(indexResponse.getResult().name());
+        // System.out.println(indexResponseUpdate.getResult().name());
 
         // EmployeePojo emp = new EmployeePojo("Elon01", "Musk01", LocalDate.now());
         // // POJO を JSON 形式にして Elasticsearch のデータを更新
