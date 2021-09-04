@@ -21,7 +21,7 @@ public class JavaElasticUpdate {
         RestHighLevelClient client = new RestHighLevelClient(
                 RestClient.builder(new HttpHost("localhost", 9200, "http")));
 
-        // // Elasticsearch の String 型でデータ更新, 追加
+        // // String 型で Elasticsearch のデータ更新
         // UpdateRequest updateRequest = new UpdateRequest("employeeindex", "002");
         // updateRequest.doc("department", "Bussiness");
         // UpdateResponse updateResponse = client.update(updateRequest,
@@ -43,7 +43,7 @@ public class JavaElasticUpdate {
         // // 更新されたか id の確認
         // System.out.println("updated response id: " + updateResponse.getId());
 
-        // // update way2 Elasticsearch の String 型でデータ更新（元からデータがあるidの場合は一新される）
+        // // update way2 String 型で Elasticsearch のデータ更新（元からデータがあるidの場合は一新される）
         // IndexRequest request = new IndexRequest("employeeindex");
         // request.id("001");
         // request.source("company", "SpaceX");
@@ -54,11 +54,13 @@ public class JavaElasticUpdate {
 
         // // update way2
         // // Elasticsearch を Map 型でデータ更新（元からデータがあるidの場合は一新される）
+        // Map 作成
         // Map<String, Object> updateMap = new HashMap<String, Object>();
         // updateMap.put("firstname", "Sundar");
         // updateMap.put("lastname", "Pichai");
         // updateMap.put("company", "Google");
         // updateMap.put("sector", "IT");
+        // Elasticsearch を Map 型でデータ更新
         // IndexRequest request2 = new IndexRequest("employeeindex");
         // request2.id("002");
         // request2.source(updateMap);
@@ -66,8 +68,9 @@ public class JavaElasticUpdate {
         // RequestOptions.DEFAULT);
         // // 更新されたか id の確認
         // System.out.println("response id: " + indexResponseUpdate.getId());
-        // System.out.println(indexResponse.getResult().name());
+        // System.out.println(indexResponseUpdate.getResult().name());
 
+        // // EmployeePojo クラスをインスタンス化
         // EmployeePojo emp = new EmployeePojo("Elon01", "Musk01", LocalDate.now());
         // // POJO を JSON 形式にして Elasticsearch のデータを更新
         // IndexRequest request = new IndexRequest("employeeindex");
@@ -76,10 +79,11 @@ public class JavaElasticUpdate {
         // XContentType.JSON);
         // IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
         // // 更新されたか id の確認
-        // System.out.println("response id:" + indexResponse.getId());
+        // System.out.println("response id: " + indexResponse.getId());
         // System.out.println(indexResponse.getResult().name());
 
         // Using API- UpdateByQueryRequest
+        // Map を作成
         Map<String, Object> updateMap2 = new HashMap<String, Object>();
         updateMap2.put("firstname", "Sundar01");
         updateMap2.put("lastname", "Pichai01");
