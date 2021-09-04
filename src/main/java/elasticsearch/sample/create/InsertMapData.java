@@ -1,4 +1,4 @@
-package elasticsearch.sample;
+package elasticsearch.sample.create;
 
 import java.io.IOException;
 import java.util.HashMap;
