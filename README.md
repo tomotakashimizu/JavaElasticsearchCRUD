@@ -2,18 +2,24 @@
 
 JavaElasticsearchCRUD は [Java REST Client](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/index.html) を用いて Elasticsearch とデータのやりとり(CRUD) を行うためのサンプルコードです。
 
-## Elasticsearch
+## Elasticsearch setup
 
-##### 起動
+### 起動
 
-`$ elasticsearch`
+```
+$ elasticsearch
+```
 
-##### 起動の確認
+### 起動の確認
 
-`$ curl http://localhost:9200/`
+```
+$ curl http://localhost:9200/
+```
 
-## Kibana
+## Kibana setup
 
-##### 起動
+### 起動
 
-`$ kibana`
+```
+$ kibana
+```
