@@ -1,6 +1,6 @@
 # JavaElasticsearchCRUD
 
-JavaElasticsearchCRUD は [Java REST Client](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/index.html) を用いて [Elasticsearch](https://www.elastic.co/products/elasticsearch) とデータのやりとり(CRUD) を行うためのサンプルコードです。
+JavaElasticsearchCRUD は [Java REST Client](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/index.html) を用いて [Elasticsearch](https://www.elastic.co/products/elasticsearch) とデータのやりとり(CRUD) を行うためのサンプルコードです。Elasticsearch に保存されたデータは [Kibana](https://www.elastic.co/products/kibana) で可視化して確認できます。
 
 ## Elasticsearch setup
 
