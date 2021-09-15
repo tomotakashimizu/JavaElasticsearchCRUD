@@ -36,5 +36,8 @@ public class UpdatePOJOMappingsData {
         // 更新されたか id の確認
         System.out.println("response id: " + indexResponse.getId());
         System.out.println(indexResponse.getResult().name());
+
+        // クライアントを閉じる
+        client.close();
     }
 }

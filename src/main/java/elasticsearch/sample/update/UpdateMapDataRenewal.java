@@ -36,5 +36,8 @@ public class UpdateMapDataRenewal {
         // 更新されたか id の確認
         System.out.println("response id: " + indexResponseUpdate.getId());
         System.out.println(indexResponseUpdate.getResult().name());
+
+        // クライアントを閉じる
+        client.close();
     }
 }

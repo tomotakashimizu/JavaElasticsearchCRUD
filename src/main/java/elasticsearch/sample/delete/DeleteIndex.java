@@ -22,5 +22,8 @@ public class DeleteIndex {
         client.indices().delete(request, RequestOptions.DEFAULT);
 
         System.out.println("Delete Done ");
+
+        // クライアントを閉じる
+        client.close();
     }
 }
