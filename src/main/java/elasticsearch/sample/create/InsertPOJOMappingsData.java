@@ -35,5 +35,8 @@ public class InsertPOJOMappingsData {
         // 正常に処理されたか確認
         System.out.println("response id: " + indexResponse.getId());
         System.out.println("response name: " + indexResponse.getResult().name());
+
+        // クライアントを閉じる
+        client.close();
     }
 }
