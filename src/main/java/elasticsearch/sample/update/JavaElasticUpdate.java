@@ -98,6 +98,9 @@ public class JavaElasticUpdate {
             long totalDocs = bulkResponse.getTotal();
             // 更新されたか id の確認
             System.out.println("updated response id: " + totalDocs);
+
+            // クライアントを閉じる
+            client.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

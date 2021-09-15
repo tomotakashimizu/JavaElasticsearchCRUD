@@ -27,5 +27,8 @@ public class JavaElasticDelete {
         DeleteIndexRequest request = new DeleteIndexRequest("employeeindex");
         client.indices().delete(request, RequestOptions.DEFAULT);
         System.out.println("Delete Done ");
+
+        // クライアントを閉じる
+        client.close();
     }
 }

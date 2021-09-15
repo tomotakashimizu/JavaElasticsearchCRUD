@@ -23,5 +23,8 @@ public class DeleteIndexId {
                 RequestOptions.DEFAULT);
         // 削除した id を確認
         System.out.println("response id: " + deleteResponse.getId());
+
+        // クライアントを閉じる
+        client.close();
     }
 }

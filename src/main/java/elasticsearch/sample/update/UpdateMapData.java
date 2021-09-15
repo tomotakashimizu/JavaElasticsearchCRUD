@@ -32,5 +32,8 @@ public class UpdateMapData {
                 RequestOptions.DEFAULT);
         // 更新されたか id の確認
         System.out.println("updated response id: " + updateResponse.getId());
+
+        // クライアントを閉じる
+        client.close();
     }
 }
