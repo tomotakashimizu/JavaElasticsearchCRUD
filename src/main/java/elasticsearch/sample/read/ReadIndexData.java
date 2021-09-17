@@ -18,13 +18,14 @@ public class ReadIndexData {
         RestHighLevelClient client = new RestHighLevelClient(
                 RestClient.builder(new HttpHost("localhost", 9200, "http")));
 
+        // sampleindex のデータを取得_Query
         SearchRequest searchRequest = new SearchRequest("sampleindex");
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.query(QueryBuilders.matchAllQuery());
         searchRequest.source(searchSourceBuilder);
 
+        // sampleindex のデータを取得_結果を取得・表示
         SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-
         System.out.println("searchResponse: " + searchResponse);
 
         // クライアントを閉じる
