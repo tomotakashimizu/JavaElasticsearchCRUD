@@ -23,3 +23,15 @@ $ curl http://localhost:9200/
 ```
 $ kibana
 ```
+
+## Document
+
+### Create
+
+### Read
+
+- [Search API](https://www.elastic.co/guide//en/elasticsearch/client/java-rest/master/java-rest-high-search.html)
+
+### Update
+
+### Delete
