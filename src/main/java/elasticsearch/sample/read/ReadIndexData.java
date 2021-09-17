@@ -1,6 +1,13 @@
 package elasticsearch.sample.read;
 
 import java.io.IOException;
+import java.io.StringReader;
+import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.search.SearchRequest;
@@ -24,9 +31,18 @@ public class ReadIndexData {
         searchSourceBuilder.query(QueryBuilders.matchAllQuery());
         searchRequest.source(searchSourceBuilder);
 
-        // sampleindex のデータを取得_結果を取得・表示
+        // sampleindex のデータを取得_結果を取得
         SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-        System.out.println("searchResponse: " + searchResponse);
+
+        // JSON を整形
+        String searchResponseString = searchResponse.toString();
+        Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
+        JsonReader reader = new JsonReader(new StringReader(searchResponseString));
+        Map<String, Object> map = gson.fromJson(reader, new TypeToken<Map<String, Object>>() {
+        }.getType());
+
+        // sampleindex のデータを取得_結果を表示
+        System.out.println("searchResponse: \n" + gson.toJson(map));
 
         // クライアントを閉じる
         client.close();
