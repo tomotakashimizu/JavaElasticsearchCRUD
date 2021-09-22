@@ -1,6 +1,10 @@
 package elasticsearch.sample.read;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.search.SearchRequest;
@@ -13,7 +17,7 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
-public class SearchHitsData {
+public class SearchMaxId {
 
     public static void main(String[] args) throws IOException {
         // Elasticsearch に接続
@@ -28,6 +32,8 @@ public class SearchHitsData {
 
         // sampleindex のデータを取得_結果を取得
         SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
+
+        List<Integer> ids = new ArrayList<>(Arrays.asList(0));
 
         // To get access to the returned documents, we need to first get the SearchHits
         // contained in the response:
@@ -46,7 +52,14 @@ public class SearchHitsData {
             System.out.println("index: " + index);
             System.out.println("id: " + id);
             System.out.println("score: " + score);
+
+            int idInt = Integer.parseInt(id);
+            ids.add(idInt);
         }
+        System.out.println("ids: " + ids);
+
+        int idMax = Collections.max(ids);
+        System.out.println("idMax: " + idMax);
 
         // クライアントを閉じる
         client.close();
