@@ -28,6 +28,8 @@ $ kibana
 
 ### Create
 
+- [Create Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-create-index.html)
+
 ### Read
 
 - [Search API](https://www.elastic.co/guide//en/elasticsearch/client/java-rest/master/java-rest-high-search.html)
