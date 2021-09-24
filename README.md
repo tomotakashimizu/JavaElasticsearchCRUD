@@ -24,7 +24,7 @@ $ curl http://localhost:9200/
 $ kibana
 ```
 
-## Document
+## Document [Java REST Client](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/index.html)
 
 ### Create
 
