@@ -28,12 +28,12 @@ $ kibana
 
 ### Create
 
-- [Create Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-create-index.html)
-- [Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-document-index.html)
+- [Create Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-create-index.html)：新しい index を作成
+- [Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-document-index.html)：index にデータを作成
 
 ### Read
 
-- [Search API](https://www.elastic.co/guide//en/elasticsearch/client/java-rest/master/java-rest-high-search.html)
+- [Search API](https://www.elastic.co/guide//en/elasticsearch/client/java-rest/master/java-rest-high-search.html)：データを取得, 検索
 
 ### Update
 
