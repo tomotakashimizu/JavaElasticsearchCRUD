@@ -37,4 +37,7 @@ $ kibana
 
 ### Update
 
+- [Update API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-document-update.html)：データ更新, 追加
+- [Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-document-index.html)：データ更新（元からデータがある id の場合は一新される）
+
 ### Delete
