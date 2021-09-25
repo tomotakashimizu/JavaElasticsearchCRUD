@@ -41,3 +41,6 @@ $ kibana
 - [Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-document-index.html)：データ更新（元からデータがある id の場合は一新される）
 
 ### Delete
+
+- [Delete Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-delete-index.html)：特定の index ごと削除
+- [Delete API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-document-delete.html)：特定の index id のデータを削除
